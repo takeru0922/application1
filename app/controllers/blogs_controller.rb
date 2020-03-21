@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   def index
+    # 記事を全件取得
+    @blogs = Blog.all
   end
 
   def show
@@ -17,4 +19,8 @@ class BlogsController < ApplicationController
 
   def edit
   end
+  private
+    def blog_params
+      params.require(:blog).permit(:title, :category, :body)
+    end
 end
